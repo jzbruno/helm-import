@@ -31,6 +31,7 @@ This repo has an example chart that can be used for testing.
 1. Create a Kubernetes deployment and service
 
     ```sh
+    kubectl create ns test
     kubectl -n test apply -f ./charts/test/templates/deployment.yaml
     ```
 
@@ -69,4 +70,10 @@ This repo has an example chart that can be used for testing.
     STATUS: deployed
     REVISION: 1
     TEST SUITE: None
+    ```
+
+5. Cleanup
+
+    ```sh
+    helm uninstall -n test test
     ```
