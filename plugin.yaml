@@ -1,5 +1,5 @@
 name: import
-version: 1.0.0
+version: 1.0.1
 usage: helm import RELEASE_NAME CHART [args ...]
 description: A Helm plugin to import existing Kubernetes resources so they can be managed by a Helm chart.
 command: $HELM_PLUGIN_DIR/helm-import.sh
