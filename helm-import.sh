@@ -30,11 +30,11 @@ shift 2
 echo "Adding annotations to all resources found by running template command ..."
 echo ${HELM_BIN} template "${release_name}" "${chart}" ${@}
 echo " "
-${HELM_BIN} template "${release_name}" "${chart}" ${@} | kubectl annotate -f- "meta.helm.sh/release-name=${release_name}" "meta.helm.sh/release-namespace=${HELM_NAMESPACE}" --overwrite || true
+${HELM_BIN} template "${release_name}" "${chart}" ${@} | kubectl -n ${HELM_NAMESPACE} annotate -f- "meta.helm.sh/release-name=${release_name}" "meta.helm.sh/release-namespace=${HELM_NAMESPACE}" --overwrite || true
 echo " "
 
 echo "Adding labels to all resources found by running template command ..."
 echo ${HELM_BIN} template "${release_name}" "${chart}" ${@}
 echo " "
-${HELM_BIN} template "${release_name}" "${chart}" ${@} | kubectl label -f- "app.kubernetes.io/managed-by=Helm" --overwrite || true
+${HELM_BIN} template "${release_name}" "${chart}" ${@} | kubectl -n ${HELM_NAMESPACE} label -f- "app.kubernetes.io/managed-by=Helm" --overwrite || true
 echo " "
